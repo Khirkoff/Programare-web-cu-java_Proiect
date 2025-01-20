@@ -21,7 +21,7 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
-    // Register a new user
+    
     public User registerUser(RegistrationBody registrationBody) {
         Optional<User> existingEmail = userRepository.findByEmail(registrationBody.getEmail());
         Optional<User> existingUsername = userRepository.findByUsername(registrationBody.getUsername());
@@ -37,7 +37,7 @@ public class UserService {
         user.setUsername(registrationBody.getUsername());
         user.setEmail(registrationBody.getEmail());
         user.setPassword(registrationBody.getPassword());
-        user.setRole(UserRole.CLIENT); // Using the constant
+        user.setRole(UserRole.CLIENT);
 
         userRepository.save(user);
         return user;
